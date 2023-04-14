@@ -15,6 +15,7 @@ import environ
 
 env = environ.Env(
     DEBUG=(bool, False),
+    EMAIL_PORT=(int, 25),
 )
 env.prefix = "CINEBASE_"
 
@@ -44,7 +45,16 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
     "rest_framework",
+    "rest_framework.authtoken",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
+    "profiles",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
@@ -133,10 +143,34 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Django "sites" framework
+# https://docs.djangoproject.com/en/4.2/ref/contrib/sites/#module-django.contrib.sites
+
+SITE_ID = 1
+
+# Sending email
+# https://docs.djangoproject.com/en/4.2/topics/email/#module-django.core.mail
+
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = env("EMAIL_PORT")
+# EMAIL_USE_TLS = True
+
 # Django REST Framework
 # https://www.django-rest-framework.org/
 
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 10,
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+# drf-spectacular
+# https://drf-spectacular.readthedocs.io/
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "CineBase API",
+    "DESCRIPTION": "Movie database",
+    "VERSION": "0.1.0",
 }
