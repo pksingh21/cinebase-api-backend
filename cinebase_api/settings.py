@@ -53,8 +53,10 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "dj_rest_auth",
     "dj_rest_auth.registration",
+    "django_filters",
     "profiles",
     "movies",
+    "user_reviews",
     "rest_controller",
     "drf_spectacular",
 ]
