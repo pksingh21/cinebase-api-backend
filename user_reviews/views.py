@@ -6,6 +6,7 @@ from user_reviews.serializers import UserReviewSerializer
 
 
 class UserReviewViewSet(viewsets.ModelViewSet):
+    queryset = UserReview.objects.all()
     serializer_class = UserReviewSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
     filter_backends = [DjangoFilterBackend]

@@ -8,4 +8,4 @@ class UserReview(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     rating = models.FloatField()
-    review = models.TextField(blank=True)
+    review = models.TextField(null=True, blank=True)
