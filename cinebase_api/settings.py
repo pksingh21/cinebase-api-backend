@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "profiles",
     "movies",
     "user_reviews",
+    "people",
     "rest_controller",
     "drf_spectacular",
 ]

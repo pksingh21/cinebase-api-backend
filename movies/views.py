@@ -17,7 +17,7 @@ class MovieFilter(filters.FilterSet):
 
     class Meta:
         model = Movie
-        fields = ["title", "language"]
+        fields = ["title", "language", "genres"]
 
 
 class MovieViewSet(viewsets.ModelViewSet):
