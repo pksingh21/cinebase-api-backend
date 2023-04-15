@@ -9,7 +9,7 @@ services:
     restart: on-failure
     depends_on:
       - db
-    env_file: .env
+    env_file: .env.development.local
     expose:
       - "8000"
     ports:
@@ -19,9 +19,9 @@ services:
     image: postgres:15-alpine
     restart: always
     environment:
-      POSTGRES_PASSWORD: insecure-5qxcWydnV/T+gWKPzNLDvy/9nV+pEA+by7wCOlkCE7Pr8C+D
+      POSTGRES_PASSWORD: insecure-n5JqTQMas9cRhG0RGuRlBKA52/S6vpFCqTFjniK6XkcVcy2s
       CINEBASE_PG_USER: cinebase_user
-      CINEBASE_PG_PASSWORD: insecure-y6h7gMxaVpskAOUktgX8m9UivvUFcvkwFyzyXLUkousAvwki
+      CINEBASE_PG_PASSWORD: insecure-pfjFvYf6eqrX8cx9CEqZr111QncqPwSGRGOfIK2cLG338vVg
       CINEBASE_DB: cinebase
     volumes:
       - db-data:/var/lib/postgresql/data
