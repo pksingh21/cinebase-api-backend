@@ -1,0 +1,34 @@
+name: cinebase-dev
+
+services:
+  api:
+    build:
+      context: ../../
+      dockerfile: docker/development/Dockerfile
+    image: cinebase-api:dev
+    restart: on-failure
+    depends_on:
+      - db
+    env_file: .env
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: insecure-5qxcWydnV/T+gWKPzNLDvy/9nV+pEA+by7wCOlkCE7Pr8C+D
+      CINEBASE_PG_USER: cinebase_user
+      CINEBASE_PG_PASSWORD: insecure-y6h7gMxaVpskAOUktgX8m9UivvUFcvkwFyzyXLUkousAvwki
+      CINEBASE_DB: cinebase
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ../docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+      - ../../:/usr/src/app
+    expose:
+      - "5432"
+
+volumes:
+  db-data:

@@ -14,8 +14,9 @@ from pathlib import Path
 import environ
 
 env = environ.Env(
-    DEBUG=(bool, False),
-    EMAIL_PORT=(int, 25),
+    CINEBASE_DEBUG=(bool, False),
+    CINEBASE_EMAIL_PORT=(int, 25),
+    CINEBASE_ALLOWED_HOSTS=(list, []),
 )
 env.prefix = "CINEBASE_"
 
@@ -34,7 +35,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 
 # Application definition
 
