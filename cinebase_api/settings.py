@@ -157,6 +157,8 @@ SITE_ID = 1
 # Sending email
 # https://docs.djangoproject.com/en/4.2/topics/email/#module-django.core.mail
 
+DEFAULT_FROM_EMAIL = "noreply@cinebase.org"
+
 EMAIL_HOST = env("EMAIL_HOST")
 EMAIL_HOST_USER = env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
