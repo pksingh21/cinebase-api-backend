@@ -11,6 +11,7 @@ class Person(models.Model):
         NOT_APPLICABLE = 9, _("Not applicable")
 
     id = models.BigAutoField(primary_key=True)
+    tmdb_id = models.BigIntegerField(null=True, blank=True)
     name = models.CharField(max_length=255)
     gender = models.IntegerField(choices=Gender.choices, default=Gender.NOT_KNOWN)
     birthday = models.DateField(null=True, blank=True)
