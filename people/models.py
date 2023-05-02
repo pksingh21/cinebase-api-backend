@@ -16,6 +16,10 @@ class Person(models.Model):
     gender = models.IntegerField(choices=Gender.choices, default=Gender.NOT_KNOWN)
     birthday = models.DateField(null=True, blank=True)
     deathday = models.DateField(null=True, blank=True)
+    known_for_department = models.CharField(max_length=255, null=True, blank=True)
+    biography = models.TextField(null=True, blank=True)
+    place_of_birth = models.CharField(max_length=255, null=True, blank=True)
+    profile_path = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:
         db_table = "people_person"
@@ -26,3 +30,6 @@ class MovieCredit(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     person = models.ForeignKey(Person, on_delete=models.CASCADE)
     credits_type = models.CharField(max_length=255)
+    department = models.CharField(max_length=255, null=True, blank=True)
+    job = models.CharField(max_length=255, null=True, blank=True)
+    character = models.CharField(max_length=255, null=True, blank=True)
